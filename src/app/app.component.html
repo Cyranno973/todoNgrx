@@ -12,7 +12,7 @@
         <li *ngFor="let todo of todos$ | async; let i = index">
           <span>{{ todo.message }} ({{ todo.done }})</span>
           <button mat-raised-button color="primary" (click)="toggleTodo(i)">
-            toogle
+            toggle
           </button>
           <button mat-raised-button color="warn" (click)="deleteTodo(i)">
             Supprimer
