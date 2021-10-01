@@ -24,8 +24,10 @@ export class TodoService {
   }
 
   public toggleTodo(index: number) {
-    const currentTodos = this.todos$.value;
-    currentTodos[index].done = !currentTodos[index].done;
-    this.todos$.next(currentTodos);
+    this.todos$.next(
+      this.todos$.value.map((v, i) =>
+        i !== index ? v : { ...v, done: !v.done }
+      )
+    );
   }
 }
