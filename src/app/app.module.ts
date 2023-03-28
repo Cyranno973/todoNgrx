@@ -8,7 +8,7 @@ import {StoreRouterConnectingModule} from "@ngrx/router-store";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 
-import {ROOT_REDUCERS} from "./shared/store";
+import {metaReducers, ROOT_REDUCERS} from "./shared/store";
 
 import {APP_ROUTES} from "./app.routes";
 import {AppComponent} from './app.component';
@@ -20,7 +20,7 @@ import {AppComponent} from './app.component';
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(APP_ROUTES),
-    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreModule.forRoot(ROOT_REDUCERS, {metaReducers}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
