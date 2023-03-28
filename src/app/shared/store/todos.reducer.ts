@@ -12,6 +12,7 @@ export const TODOS_INITIAL_STATE = {
     },
   ]
 }
+export const todoFeatureKey = 'todos';
 export const todosReducer = createReducer(
   TODOS_INITIAL_STATE,
   on(

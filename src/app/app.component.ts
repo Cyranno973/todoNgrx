@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Todo } from './shared/interfaces/todo.interface';
-import { TodoService } from './shared/services/todo.service';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Todo} from './shared/interfaces/todo.interface';
+import {Store} from "@ngrx/store";
+import {selectTodosData} from "./shared/store/todos.selectors";
+import {addTodoAction, deleteTodoAction, toggleTodoAction} from "./shared/store/todos.action";
 
 @Component({
   selector: 'app-root',
@@ -9,20 +11,24 @@ import { TodoService } from './shared/services/todo.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public todos$: Observable<Todo[]> = this.todoService.todos$.asObservable();
+  public todos$: Observable<Todo[]> = this.store.select(selectTodosData);
   public message!: string;
 
-  constructor(private todoService: TodoService) {}
+
+  constructor(private store: Store) {
+  }
 
   public addTodo() {
-    this.todoService.addTodo({ message: this.message, done: false });
+    this.store.dispatch(
+      addTodoAction({todo: {message: this.message, done: false}})
+    );
   }
 
   public toggleTodo(index: number) {
-    this.todoService.toggleTodo(index);
+    this.store.dispatch(toggleTodoAction({index}));
   }
 
   public deleteTodo(index: number) {
-    this.todoService.deleteTodo(index);
+    this.store.dispatch(deleteTodoAction({index}));
   }
 }
