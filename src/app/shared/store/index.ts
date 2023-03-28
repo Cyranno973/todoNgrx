@@ -1,21 +1,17 @@
 import {Todo} from "../interfaces/todo.interface";
-import {Action, ActionReducerMap, createReducer} from "@ngrx/store";
+import {Action, ActionReducerMap} from "@ngrx/store";
+import {todosReducer, TodosState} from "./todos.reducer";
 
+/**
+ * l'ensemble du state de notre application
+ */
 export interface AppState {
-  todos: {
-    data: Todo[]
-  }
+  todos: TodosState
 }
 
-export const TODOS_INITIAL_STATE = {
-  data: [
-    {
-      message: 'manger une pizza',
-      done: false,
-    },
-  ]
-}
-export const todosReducer = createReducer(TODOS_INITIAL_STATE)
+/**
+ * configuration de tous nos reducer et des differente parti du state
+ */
 export const ROOT_REDUCERS: ActionReducerMap<AppState, Action> = {
   todos: todosReducer
 }
