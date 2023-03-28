@@ -1,5 +1,6 @@
 import {createAction, props} from "@ngrx/store";
-import {Todo} from "../interfaces/todo.interface";
+import {Todo} from "../../../interfaces/todo.interface";
+
 
 export const fetchTodosAction  = createAction('[todos] fetch todo')
 export const fetchTodosSuccessAction = createAction('[todos] fetch todo success', props<{todos: Todo[]}>())

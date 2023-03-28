@@ -1,20 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {of, tap} from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
-import { Todo } from '../interfaces/todo.interface';
-import { TodosService } from '../services/todos.service';
-import {
-  fetchTodosAction,
-  fetchTodosSuccessAction,
-  errorTodoAction,
-  tryAddTodoAction,
-  addTodoAction,
-  tryDeleteTodoAction,
-  deleteTodoAction,
-  tryUpdateTodoAction,
-  updateTodoAction,
-} from './todos.actions';
+import {Injectable} from "@angular/core";
+import {Todo} from "../../../interfaces/todo.interface";
+import {addTodoAction, deleteTodoAction, errorTodoAction, fetchTodosAction, fetchTodosSuccessAction, tryAddTodoAction, tryDeleteTodoAction, tryUpdateTodoAction, updateTodoAction} from "./todos.actions";
+import {catchError, map, of, switchMap} from "rxjs";
+import {Actions, createEffect, ofType} from "@ngrx/effects";
+import {TodosService} from "../../../services/todos.service";
+
 
 @Injectable()
 export class TodoEffects {

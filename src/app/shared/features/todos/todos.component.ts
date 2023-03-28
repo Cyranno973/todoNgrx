@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, OnInit} from "@angular/core";
+import {selectTodo, selectTodosData} from "./store/todos.selectors";
 import {Todo} from "../../interfaces/todo.interface";
-import {selectTodo, selectTodosData} from "../../store/todos.selectors";
+import {fetchTodosAction, tryAddTodoAction, tryDeleteTodoAction, tryUpdateTodoAction} from "./store/todos.actions";
 import {Store} from "@ngrx/store";
-import {fetchTodosAction, tryAddTodoAction, tryDeleteTodoAction, tryUpdateTodoAction} from "../../store/todos.actions";
+import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-todos',

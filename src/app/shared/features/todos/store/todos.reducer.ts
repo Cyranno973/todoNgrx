@@ -1,6 +1,7 @@
 import {createReducer, on} from "@ngrx/store";
-import {Todo} from "../interfaces/todo.interface";
+
 import * as TodosActions from './todos.actions'
+import {Todo} from "../../../interfaces/todo.interface";
 
 export interface TodosState {
   data: Todo[],
